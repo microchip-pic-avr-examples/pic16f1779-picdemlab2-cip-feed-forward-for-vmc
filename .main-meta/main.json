@@ -3,28 +3,28 @@
     "category": "com.microchip.ide.project",
     "content": {
         "metaDataVersion": "1.1.0",
-        "name": "com.microchip.mcu8.mplabx.project.",
-        "version": " ",
-        "displayName": "  ",
-        "projectName": "",
-        "shortDescription": "",
+        "name": "com.microchip.mcu8.mplabx.project.pic16f1779-picdemlab2-cip-feed-forward-for-vmc",
+        "version": "1.0.1",
+        "displayName": "Feed-Forward Function for Voltage Mode Control with CIPs",
+        "projectName": "pic16f1779-picdemlab2-cip-feed-forward-for-vmc",
+        "shortDescription": "Implementation of the Feed-forward function for SMPS VMC loops implemented with CIPs.",
         "ide": {
-            "name": "",
-            "semverRange": ""
+            "name": "MPLAB X",
+            "semverRange": ">=5.30.0"
         },
         "compiler": [
 			{
-				"name": "",
-				"semverRange": ""
+				"name": "XC8",
+				"semverRange": "^2.10.0"
 			}
 		],
         "dfp": {
-            "name": "",
-            "semverRange": ""
+            "name": "PIC16F1xxxx_DFP",
+            "semverRange": "^1.2.99"
         },
         "configurator": {
-            "name": "",
-            "semverRange": ""
+            "name": "MCC",
+            "semverRange": ">=3.95.0"
         },
         "device": {
             "metaDataVersion": "1.0.0",
@@ -32,26 +32,27 @@
             "content": {
                 "metaDataVersion": "1.0.0",
                 "category": "com.microchip.device",
-                "name": "",
+                "name": "PIC16F1779",
                 "versionRange": "*"
             }
         },
-        "author": "",
+        "author": "Microchip",
         "subcategories": [
-            "",
-            [
-               "Peripherals", ""
-            ],
-            [
-               "Peripherals", ""
-            ]            			
+            ["Peripherals", "OPAMP"],
+            ["Peripherals", "DAC"],
+            ["Peripherals", "CMP"],
+            ["Peripherals", "PRG"],
+            ["Peripherals", "PWM"],
+            ["Peripherals", "TMR2"]
         ],
         "peripherals": [
-            "",""
+            "OPAMP", "DAC", "CMP", "PRG", "PWM", "TMR2"
         ],
         "keywords": [
-            "",
-            ""			
+            "Feed-Forward",
+            "Voltage Mode Control",
+            "SMPS",
+            "VMC"
         ],
 		"additionalData": {
 			"longDescription": {
