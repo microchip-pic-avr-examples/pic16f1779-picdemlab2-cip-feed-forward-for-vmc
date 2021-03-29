@@ -1,12 +1,12 @@
-<div id="readme" class="Box-body readme blob js-code-block-container">
-  <article class="markdown-body entry-content p-3 p-md-6" itemprop="text"><p><a href="https://www.microchip.com" rel="nofollow"><img src="https://camo.githubusercontent.com/5fb5505f69a28ff407841612dfe2b7004f210594/68747470733a2f2f636c6475702e636f6d2f553071684c7742696a462e706e67" alt="MCHP" data-canonical-src="https://cldup.com/U0qhLwBijF.png" style="max-width:100%;"></a></p>
+[![MCHP](images/microchip.png)](https://www.microchip.com)
 
-#### Feed-Forward Function for Voltage Mode Control with CIPs
+# Feed-Forward Function for Voltage Mode Control with CIPs
 
-Implementation of the Feed-forward function for SMPS VMC loops implemented with CIPs
+This repository provides an implementation for the Feed-forward function for SMPS VMC loops implemented with CIPs.
 
 
 #  Introduction
+
 Voltage mode control (VMC) was introduced as the first method to properly close the loop and regulate the output of the switched mode power supply (SMPS). 
 The disadvantage of slow response to line and load changes shifted the attention of SMPS designers to current mode control (CMC) as it presented immediate response and it eliminated delay and gain variations.
 The voltage mode control can be improved by adding voltage feed-forward, which eliminates the effects of line voltage variations. 
@@ -32,14 +32,14 @@ The rest of the VMC configuration remains the same and it can be implemented wit
 Figure 1: Internal CIP connections for the feed-forward function, Vin to REF- of the DAC
 
 
- <img src="https://static.transim.com/img/62019/9f6d9f33fcde443db34fd3b2eea7a6aa-fz6rd.png" alt="Hardware Setup" width="640"/>
+<br><img src="images/feed-fw-vmc-diagram-1.png" width="600">
 
  
 
 Figure 2: Internal CIP connections for the feed-forward function, Vin to REF+ of the DAC
 
 
- <img src="https://static.transim.com/img/62019/ebd1b7f106ee42e789c5f4242485a4c3-3qgzf.png" alt="Hardware Setup" width="640"/>
+<br><img src="images/feed-fw-vmc-diagram-2.png" width="600">
 
 
 Figure 3 is a visual depiction of how the signals will facilitate the feedforward function.
@@ -56,12 +56,20 @@ Let’s say the period is 2us, in order to not reach 5V with the ramp before the e
  
 Figure 3: Internal signals for the feedforward function
 
+<br><img src="images/feed-fw-vmc-output-1.png" width="600">
 
- <img src="https://static.transim.com/img/62019/a49e65842b0b48b3b4d37510e96add0b-s7sh0.png" alt="Hardware Setup" width="640"/>
+## Related Documentation
+- [PIC16F1779 Product Family Page](https://www.microchip.com/wwwproducts/en/PIC16F1779)
+- [PIC16F1779 datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/PIC16(L)F1777_8_9_Family_Data_Sheet_40001819D.pdf) for more information or specifications
+- [TB3167 Advantages of the Operational Amplifier Peripheral in PIC Microcontrollers for SMPS Applications](https://www.microchip.com//wwwAppNotes/AppNotes.aspx?appnote=en598583)
 
+## Software Used
 
+- MPLAB® X IDE 5.30 or newer [(microchip.com/mplab/mplab-x-ide)](http://www.microchip.com/mplab/mplab-x-ide)
+- MPLAB® XC8 2.10 or newer compiler [(microchip.com/mplab/compilers)](http://www.microchip.com/mplab/compilers)
+- MPLAB® Code Configurator (MCC) 3.95.0 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
 
-# Test Setup
+## Setup
 
 The following are used to test this function:
 - One PICDEM LAB II board (or a prototyping board)
@@ -71,10 +79,6 @@ The following are used to test this function:
 - wires, MPLAB® PICkit™ 4 (any other PIC programmer will work)
 - One Oscilloscope to verify the signals
 
-The software used at the time of the tests are:
-- MPLAB® X IDE 5.30 or newer [(microchip.com/mplab/mplab-x-ide)](http://www.microchip.com/mplab/mplab-x-ide)
-- MPLAB® XC8 2.10 or newer compiler [(microchip.com/mplab/compilers)](http://www.microchip.com/mplab/compilers)
-- MPLAB® Code Configurator (MCC) 3.95.0 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
 
 The following figure depicts the test setup, where VDD and GND are provided by PICkit 4. To power the
 board from the PICkit 4, right click on the current project, followed by Properties/PICkit 4/Option
@@ -86,9 +90,7 @@ core intervention.
  
 Figure 4: IC pin connections for the feedforward function
 
-
-<img src="https://static.transim.com/img/62019/9b55196fad464f24af930116e01217bb-5bgcx.png" alt="Hardware Setup" width="640"/>
-
+<br><img src="images/feed-fw-vmc-setup-1.png" width="600">
 
 
 MCU Configurations: 
@@ -104,16 +106,16 @@ OPA1: Set as Unity gain, PRG1 set as input; is used to monitor the internal PRG 
 For more information on the CIPs see the PIC16F176X/7X product’s data sheet.
 Figure 5 depicts the MCC peripherals used, the configuration of the PRG, the pinout and the lines of code added in in the main.c file.
 The lines of code added 
-‘while (!PRG1_IsReady()); 
-PRG1_StartRampGeneration();’ 
+
+`while (!PRG1_IsReady()); 
+PRG1_StartRampGeneration();`
+
 Allow the PRG time to initialize and start when it is ready
 
   
 Figure 5: MCC CIPs used and MCU pinout
 
-
-<img src="https://static.transim.com/img/62019/c216f22ad3684eeab5389c47a2671c7d-r48b3.png" alt="Hardware Setup" width="640"/>
-
+<br><img src="images/feed-fw-vmc-setup-2.png" width="600">
 
 **RESULTS**
 
@@ -130,8 +132,7 @@ The previous discussed signals are depicted in figure 6 in the case when the Inp
 Figure 6: Comparator Output when VIN is close to its minimum value
 
 
-<img src="https://static.transim.com/img/62019/089bb7cb138246248e796ea41c2b89ca-xrs3b.png" alt="Hardware Setup" width="640"/>
-
+<br><img src="images/feed-fw-vmc-output-2.png" width="600">
 
 
 The signals when the Input voltage is at a middle value are depicted in figure 7, it can be noticed how the rising event of the comparator starts earlier than before, which means a medium duty-cycle on the SMPS PWM. 
@@ -139,9 +140,7 @@ The change in duty-cycle happened without the change of the feedback signal (C1I
 
 Figure 7: Comparator Output when VIN is at its medium value
 
-
-<img src="https://static.transim.com/img/62019/11d2caf3937b4ce48817dd199f5379b2-fljwm.png" alt="Hardware Setup" width="640"/>
-
+<br><img src="images/feed-fw-vmc-output-3.png" width="600">
 
 
 The signals when the Input voltage is at the maximum value are depicted in figure 8, it can be noticed how the rising event of the comparator starts even earlier than before, which means a smaller duty-cycle on the SMPS PWM. 
@@ -150,8 +149,7 @@ The change in duty-cycle happened without the change of the feedback signal (C1I
 Figure 8: Comparator Output when VIN is close to its maximum value
 
 
-<img src="https://static.transim.com/img/62019/3cc5f11214ef43618334680731a6a847-13zlj.png" alt="Hardware Setup" width="640"/>
-
+<br><img src="images/feed-fw-vmc-output-4.png" width="600">
 
 
 To address a measurement bandwidth limitation:
@@ -160,12 +158,10 @@ In figure 9 the actual PRG signal superimposed over the measured OPA1OUT signal 
  
 Figure 9: Internal BW limiting
 
-
-<img src="https://static.transim.com/img/62019/aec872383f9140cdbdc5ed879bb10c02-fwcmy.png" alt="Hardware Setup" width="640"/>
-
+<br><img src="images/feed-fw-vmc-output-5.png" width="600">
 
 
-**CONCLUSIONS**
+## Conclusion
 
 The solution presented in this Example shows how to implement the feedforward function for voltage mode control in SMPS applications using the PIC16F176X/7X. 
 The Programmable Ramp Generator peripheral in the PIC16F1 family is not equipped to implement slope change dependent to an external signal, 

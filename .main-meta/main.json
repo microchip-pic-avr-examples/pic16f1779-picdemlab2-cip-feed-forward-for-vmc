@@ -7,7 +7,7 @@
         "version": "1.0.1",
         "displayName": "Feed-Forward Function for Voltage Mode Control with CIPs",
         "projectName": "pic16f1779-picdemlab2-cip-feed-forward-for-vmc",
-        "shortDescription": "Implementation of the Feed-forward function for SMPS VMC loops implemented with CIPs.",
+        "shortDescription": "This repository provides an implementation for the Feed-forward function for SMPS VMC loops implemented with CIPs.",
         "ide": {
             "name": "MPLAB X",
             "semverRange": ">=5.30.0"
@@ -38,15 +38,13 @@
         },
         "author": "Microchip",
         "subcategories": [
-            ["Peripherals", "OPAMP"],
-            ["Peripherals", "DAC"],
-            ["Peripherals", "CMP"],
-            ["Peripherals", "PRG"],
-            ["Peripherals", "PWM"],
-            ["Peripherals", "TMR2"]
+            [
+			"Peripherals",
+			"OPAMP"
+			]
         ],
         "peripherals": [
-            "OPAMP", "DAC", "CMP", "PRG", "PWM", "TMR2"
+            "OPAMP"
         ],
         "keywords": [
             "Feed-Forward",
